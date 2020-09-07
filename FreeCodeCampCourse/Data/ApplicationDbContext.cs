@@ -1,4 +1,4 @@
-﻿using FreeCodeCampCourse.Models;
+using FreeCodeCampCourse.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -15,5 +15,6 @@ namespace FreeCodeCampCourse.Data
         }
 
         public DbSet<Category> Category { get; set; }
+
     }
 }
