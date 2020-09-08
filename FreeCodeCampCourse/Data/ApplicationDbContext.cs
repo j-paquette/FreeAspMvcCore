@@ -11,10 +11,15 @@ namespace FreeCodeCampCourse.Data
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
-
+            //This class "...DbContext" inherits from Entity Framework DbContext
+            //Configuration to use DbContext    
         }
-
+        
         public DbSet<Category> Category { get; set; }
+        //This is the entity that I want to create in the database
+
+        public DbSet<ApplicationType> ApplicationType { get; set; }
+
 
     }
 }
