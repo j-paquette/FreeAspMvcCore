@@ -12,6 +12,8 @@ namespace FreeCodeCampCourse.Models
         [Key]
         //Data annotations: this indicates that Id column has an index & primary key
         public int Id { get; set; }
+
+        [DisplayName("Name")]
         public string CategoryName { get; set; }
         //Annotations allow us to show the column header as text we want instead of just column name
         [DisplayName("Display Order")]

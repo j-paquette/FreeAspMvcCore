@@ -33,5 +33,17 @@ namespace FreeCodeCampCourse.Controllers
             //This can be empty because user will create a new category
             return View();
         }
+
+        //POST - CREATE
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Category obj)
+        {
+            _db.Category.Add(obj);
+            //You need to commit first (Entity Framework) to add the new category to the database.
+            _db.SaveChanges();
+            //It's redirecting to the same Controller, so no need to identify it.
+            return RedirectToAction("Index");
+        }
     }
 }
