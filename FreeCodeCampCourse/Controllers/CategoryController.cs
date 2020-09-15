@@ -39,11 +39,19 @@ namespace FreeCodeCampCourse.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Category obj)
         {
-            _db.Category.Add(obj);
-            //You need to commit first (Entity Framework) to add the new category to the database.
-            _db.SaveChanges();
-            //It's redirecting to the same Controller, so no need to identify it.
-            return RedirectToAction("Index");
+            //This checks the values against any validation rules defined in Category.cs model.
+            //If the values are valid, then it will add a new category to the database.
+            if(ModelState.IsValid)
+            {
+                _db.Category.Add(obj);
+                //You need to commit first (Entity Framework) to add the new category to the database.
+                _db.SaveChanges();
+                //It's redirecting to the same Controller, so no need to identify it.
+                return RedirectToAction("Index");
+            }
+            //Otherwise, just return the values and its error msg.
+            return View(obj);
+           
         }
     }
 }
