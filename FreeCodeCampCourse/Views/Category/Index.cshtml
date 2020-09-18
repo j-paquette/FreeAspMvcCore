@@ -9,7 +9,7 @@
             @*Use tag-helpers to redirect to the Create New Category view page*@
             @*Follow the correct navigation order. You need to put the controller before the action*@
             <a asp-controller="Category" asp-action="Create" class="btn btn-primary">
-                Create New Category
+                <i class="fas fa-plus"></i> &nbsp; Create New Category
             </a>
         </div>
     </div>
@@ -41,13 +41,14 @@
                             <div class="w-75 btn-group" role="group">
                                 @*Use tag-helpers to redirect to the Create New Category view page*@
                                 @*Follow the correct navigation order. You need to put the controller before the action*@
-                                <a asp-controller="Category" asp-route-Id="@obj.Id" asp-action="Edit" class="btn btn-primary mx-2" >
-                                    Edit
+                                <a asp-controller="Category" asp-route-Id="@obj.Id" asp-action="Edit" class="btn btn-primary mx-2">
+                                    <i class="fas fa-edit"></i> &nbsp; Edit
                                 </a>
                                 @*Use tag-helpers to redirect to the Create New Category view page*@
                                 @*Follow the correct navigation order. You need to put the controller before the action*@
                                 <a asp-controller="Category" asp-route-Id="@obj.Id" asp-action="Delete" class="btn btn-danger mx-2">
-                                    Delete
+                                    @*Add the font awesome delete icon*@
+                                    <i class="far fa-trash-alt"></i> &nbsp; Delete
                                 </a>
                             </div>
                         </td>

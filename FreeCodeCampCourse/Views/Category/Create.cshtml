@@ -31,11 +31,14 @@
                 <div class="form-group row">
                     <div class="col-8 offset-4 row">
                         <div class="col">
-                            <input type="submit" class="btn btn-info w-100" value="Create" />
+                            @*<input type="submit" class="btn btn-info w-100" value="Create" />*@
+                            <button type="submit" class="btn btn-info w-100" value="Create">
+                                <i class="fas fa-plus"></i> &nbsp; Create
+                            </button>
                         </div>
                         <div class="col">
                             @*Since the Index belongs to the same controller, we don't need to specify it*@
-                            <a asp-action="Index" class="btn btn-success w-100">Back</a>
+                            <a asp-action="Index" class="btn btn-success w-100"><i class="fas fa-sign-out-alt"></i> &nbsp; Back</a>
                         </div>
                     </div>
                 </div>
