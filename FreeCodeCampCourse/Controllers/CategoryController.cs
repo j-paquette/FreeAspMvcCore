@@ -41,7 +41,7 @@ namespace FreeCodeCampCourse.Controllers
         {
             //This checks the values against any validation rules defined in Category.cs model.
             //If the values are valid, then it will add a new category to the database.
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 _db.Category.Add(obj);
                 //You need to commit first (Entity Framework) to add the new category to the database.
@@ -51,19 +51,19 @@ namespace FreeCodeCampCourse.Controllers
             }
             //Otherwise, just return the values and its error msg.
             return View(obj);
-           
+
         }
 
         //GET - EDIT
         //The int? means that parameter can be NULL.
         public IActionResult Edit(int? id)
         {
-            if(id == null || id == 0)
+            if (id == null || id == 0)
             {
                 return NotFound();
             }
             var obj = _db.Category.Find(id);
-            if(obj == null)
+            if (obj == null)
             {
                 return NotFound();
             }
@@ -113,22 +113,20 @@ namespace FreeCodeCampCourse.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeletePost(int? id)
         {
+            var obj = _db.Category.Find(id);
             //This checks the values against any validation rules defined in Category.cs model.
             //If the values are valid, then it will add a new category to the database.
-            if (ModelState.IsValid)
+            if (obj == null)
             {
-                var obj = _db.Category.Find(id);
-                if(obj == null)
-                {
-                    return NotFound();
-                }
-                _db.Category.Remove(obj);
-                //You need to commit first (Entity Framework) to add the new category to the database.
-                _db.SaveChanges();
-                //It's redirecting to the same Controller, so no need to identify it.
-                return RedirectToAction("Index");
+                return NotFound();
             }
-         }
+            _db.Category.Remove(obj);
+            //You need to commit first (Entity Framework) to add the new category to the database.
+            _db.SaveChanges();
+            //It's redirecting to the same Controller, so no need to identify it.
+            return RedirectToAction("Index");
+
+        }
 
     }
 }

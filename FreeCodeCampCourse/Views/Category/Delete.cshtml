@@ -1,15 +1,15 @@
 ﻿@model FreeCodeCampCourse.Models.Category
-@*You don't need the asp-action="Edit" because the view is called Edit, the same name as the post action.*@
+@*You don't need the asp-action="Delete" because the view is called Delete, the same name as the post action.*@
 @*asp-action is optional*@
-<form method="post">
-    @*This includes the Id as well in the POST EDIT action*@
-    @*The POST -EDIT action in CategoryController needs the record Id to work.*@
+<form method="post" asp-action="DeletePost">
+    @*This includes the Id as well in the POST DELETE action*@
+    @*The POST -DELETE action in CategoryController needs the record Id to work.*@
     <input asp-for="Id" hidden />
     @*Use Bootstrap classes*@
     <div class="border p-3">
         @*Validation summary was removed, not needed.*@
         <div class="form-group row">
-            <h2 class="text-info p1-3">Edit Category</h2>
+            <h2 class="text-info p1-3">Delete Category</h2>
         </div>
         <div class="row">
             <div class="col-8">
@@ -18,9 +18,7 @@
                         <label asp-for="CategoryName"></label>
                     </div>
                     <div class="col-8">
-                        <input asp-for="CategoryName" class="form-control" />
-                        @*You need to do validation on the server side*@
-                        <span asp-validation-for="CategoryName" class="text-danger"></span>
+                        <input asp-for="CategoryName" disabled class="form-control" />
                     </div>
                 </div>
                 <div class="form-group row">
@@ -29,13 +27,14 @@
                     </div>
                     <div class="col-8">
                         <input asp-for="DisplayOrder" class="form-control" />
-                        <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+                        @*DisplayOrder cannot be edited because of "disabled"*@
+                        <span asp-validation-for="DisplayOrder" disabled class="text-danger"></span>
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-8 offset-4 row">
                         <div class="col">
-                            <input type="submit" class="btn btn-info w-100" value="Update" />
+                            <input type="submit" class="btn btn-danger w-100" value="Delete" />
                         </div>
                         <div class="col">
                             @*Since the Index belongs to the same controller, we don't need to specify it*@
