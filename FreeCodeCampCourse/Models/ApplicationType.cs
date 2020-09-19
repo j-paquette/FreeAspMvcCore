@@ -14,6 +14,7 @@ namespace FreeCodeCampCourse.Models
         public int ApplicationTypeId { get; set; }
 
         [DisplayName("Name")]
+        [Required]
         public string ApplicationTypeName { get; set; }
 
     }

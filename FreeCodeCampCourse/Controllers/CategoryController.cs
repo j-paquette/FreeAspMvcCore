@@ -81,7 +81,7 @@ namespace FreeCodeCampCourse.Controllers
             if (ModelState.IsValid)
             {
                 _db.Category.Update(obj);
-                //You need to commit first (Entity Framework) to add the new category to the database.
+                //You need to commit first (Entity Framework) to update the category to the database.
                 _db.SaveChanges();
                 //It's redirecting to the same Controller, so no need to identify it.
                 return RedirectToAction("Index");
