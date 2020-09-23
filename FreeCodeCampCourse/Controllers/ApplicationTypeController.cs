@@ -39,11 +39,19 @@ namespace FreeCodeCampCourse.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(ApplicationType obj)
         {
-            _db.ApplicationType.Add(obj);
-            //You need to commit first (Entity Framework) to add the new category to the database.
-            _db.SaveChanges();
-            //It's redirecting to the same Controller, so no need to identify it.
-            return RedirectToAction("Index");
+            //This checks the values against any validation rules defined in Category.cs model.
+            //If the values are valid, then it will add a new category to the database.
+            if (ModelState.IsValid)
+            {
+                _db.ApplicationType.Add(obj);
+                //You need to commit first (Entity Framework) to add the new category to the database.
+                _db.SaveChanges();
+                //It's redirecting to the same Controller, so no need to identify it.
+                return RedirectToAction("Index");
+            }
+            //Otherwise, just return the values and its error msg.
+            return View(obj);
+
         }
 
         //GET - EDIT
@@ -80,7 +88,6 @@ namespace FreeCodeCampCourse.Controllers
             }
             //Otherwise, just return the values and its error msg.
             return View(obj);
-
         }
 
         //GET - DELETE
@@ -99,13 +106,9 @@ namespace FreeCodeCampCourse.Controllers
             return View(obj);
         }
 
-
-        //POST - DELETE
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult DeletePostApplicationType(ApplicationType obj)
+        public IActionResult DeletePostApplicationType(int? id)
         {
-            //var obj = _db.ApplicationType.Find(id);
+            var obj = _db.ApplicationType.Find(id);
             //This checks the values against any validation rules defined in Category.cs model.
             //If the values are valid, then it will add a new category to the database.
             if (obj == null)
@@ -117,7 +120,27 @@ namespace FreeCodeCampCourse.Controllers
             _db.SaveChanges();
             //It's redirecting to the same Controller, so no need to identify it.
             return RedirectToAction("Index");
-
         }
+
+
+        ////POST - DELETE
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public IActionResult DeletePostApplicationType(ApplicationType obj)
+        //{
+        //    //var obj = _db.ApplicationType.Find(id);
+        //    //This checks the values against any validation rules defined in Category.cs model.
+        //    //If the values are valid, then it will add a new category to the database.
+        //    if (obj == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    _db.ApplicationType.Remove(obj);
+        //    //You need to commit first (Entity Framework) to add the new category to the database.
+        //    _db.SaveChanges();
+        //    //It's redirecting to the same Controller, so no need to identify it.
+        //    return RedirectToAction("Index");
+
+        //}
     }
 }

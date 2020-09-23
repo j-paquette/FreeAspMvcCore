@@ -6,8 +6,8 @@
             <h2 class="text-primary">Application Type List</h2>
         </div>
         <div class="col-6 text-right">
-            @*Use tag-helpers to redirect to the Create New Application Type view page*@
-            @*Follow the correct navigation order. You need to put the controller before the action method*@
+            @*Use tag-helpers to redirect to the Create New Category view page*@
+            @*Follow the correct navigation order. You need to put the controller before the action*@
             <a asp-controller="ApplicationType" asp-action="Create" class="btn btn-primary">
                 <i class="fas fa-plus"></i> &nbsp; Create New Application Type
             </a>
@@ -16,14 +16,14 @@
 
     <br /><br />
     @*when accessing the model name anywhere else in the view, model name must be Captitalised (Model)*@
-    @if (Model.Count() > 0)
+    @if(Model.Count() > 0)
     {
         @*Use Bootstrap classes to display the table*@
         <table class="table table-bordered table-striped" style="width:100%">
             <thread>
                 <tr>
                     <th>
-                        Application Type Name
+                        Application Name
                     </th>
                     <th></th>
                 </tr>
@@ -35,7 +35,7 @@
                         <td width="50%">@obj.ApplicationTypeName</td>
                         <td class="text-center">
                             <div class="w-75 btn-group" role="group">
-                                @*Use tag-helpers to redirect to the Create New Application Type view page*@
+                                @*Use tag-helpers to redirect to the Create New Category view page*@
                                 @*Follow the correct navigation order. You need to put the controller before the action*@
                                 <a asp-controller="ApplicationType" asp-route-Id="@obj.ApplicationTypeId" asp-action="Edit" class="btn btn-primary mx-2">
                                     <i class="fas fa-edit"></i> &nbsp; Edit
@@ -55,9 +55,6 @@
     }
     else
     {
-        <p>No Application Type exists</p>
+        <p>No application type exists</p>
     }
 </div>
-
-
-

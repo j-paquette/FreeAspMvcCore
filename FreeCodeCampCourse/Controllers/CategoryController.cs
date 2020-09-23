@@ -125,7 +125,6 @@ namespace FreeCodeCampCourse.Controllers
             _db.SaveChanges();
             //It's redirecting to the same Controller, so no need to identify it.
             return RedirectToAction("Index");
-
         }
 
     }
