@@ -1,47 +1,40 @@
-﻿@model FreeCodeCampCourse.Models.Category
-@*You don't need the asp-action="Delete" because the view is called Delete, the same name as the post action.*@
+﻿@model FreeCodeCampCourse.Models.ApplicationType
+@*You don't need the asp-action="Edit" because the view is called Edit, the same name as the post action.*@
 @*asp-action is optional*@
-<form method="post" asp-action="DeletePost">
-    @*This includes the Id as well in the POST DELETE action*@
-    @*The POST -DELETE action in CategoryController needs the record Id to work.*@
-    <input asp-for="Id" hidden />
+<form method="post">
+    @*This includes the Id as well in the POST EDIT action*@
+    @*The POST -EDIT action in ApplicationTypeController needs the record Id to work.*@
+    <input asp-for="ApplicationTypeId" hidden />
     @*Use Bootstrap classes*@
     <div class="border p-3">
         @*Validation summary was removed, not needed.*@
         <div class="form-group row">
-            <h2 class="text-info p1-3">Delete Category</h2>
+            <h2 class="text-info p1-3">Edit Application Type</h2>
         </div>
         <div class="row">
             <div class="col-8">
                 <div class="form-group row">
                     <div class="col-4">
-                        <label asp-for="CategoryName"></label>
+                        <label asp-for="ApplicationTypeName"></label>
                     </div>
                     <div class="col-8">
-                        <input asp-for="CategoryName" disabled class="form-control" />
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <div class="col-4">
-                        <label asp-for="DisplayOrder"></label>
-                    </div>
-                    <div class="col-8">
-                        <input asp-for="DisplayOrder" class="form-control" />
-                        @*DisplayOrder cannot be edited because of "disabled"*@
-                        <span asp-validation-for="DisplayOrder" disabled class="text-danger"></span>
+                        <input asp-for="ApplicationTypeName" class="form-control" />
+                        @*You need to do validation on the server side*@
+                        <span asp-validation-for="ApplicationTypeName" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-8 offset-4 row">
                         <div class="col">
-                            @*<input type="submit" class="btn btn-danger w-100" value="Delete" />*@
-                            <button type="submit" class="btn btn-danger w-100" value="Delete">
-                                <i class="far fa-trash-alt"></i> &nbsp; Delete
+                            @*<input type="submit" class="btn btn-info w-100" value="Update" />*@
+                            <button type="submit" class="btn btn-info w-100">
+                                <i class="fas fa-edit"></i> &nbsp; Update
                             </button>
                         </div>
                         <div class="col">
                             @*Since the Index belongs to the same controller, we don't need to specify it*@
                             <a asp-action="Index" class="btn btn-success w-100">
+                                @*Add the font awesome delete icon*@
                                 <i class="fas fa-sign-out-alt"></i> &nbsp; Back
                             </a>
                         </div>
@@ -61,5 +54,7 @@
         <partial name="_ValidationScriptsPartial" />
     }
 }
+
+
 
 
