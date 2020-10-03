@@ -3,7 +3,7 @@
 @*asp-action is optional*@
 <form method="post" asp-action="DeletePostApplicationType">
     @*This includes the Id as well in the POST DELETE action*@
-    @*The POST -DELETE action in ApplicationTypeController needs the record Id to work.*@
+    @*The POST -DELETE action in CategoryController needs the record Id to work.*@
     <input asp-for="ApplicationTypeId" hidden />
     @*Use Bootstrap classes*@
     <div class="border p-3">
@@ -51,3 +51,4 @@
         <partial name="_ValidationScriptsPartial" />
     }
 }
+

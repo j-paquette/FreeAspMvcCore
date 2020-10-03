@@ -30,6 +30,7 @@ namespace FreeCodeCampCourse
         public void ConfigureServices(IServiceCollection services)
         {
             //The service container.
+            //This picks up the connectonString info from appsettings.json.ConnectionStrings.DefaultConnection
             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(
                 Configuration.GetConnectionString("DefaultConnection")));
